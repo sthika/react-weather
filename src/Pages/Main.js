@@ -3,12 +3,11 @@ import { useState } from 'react';
 import { Bars } from 'react-loader-spinner';
 import Card from '../Components/Card';
 
-const Main = ({ inpDesc, data }) => {
+const Main = ({ inpDesc, data, hourly}) => {
   let temp = (data?.main?.temp - 273.15).toFixed(1);
 
 
   const [isCardOpen, setIsCardOpen] = useState(false)
-
   const handleCardBtn = (e) => {
     setIsCardOpen(!isCardOpen);
   }
@@ -18,7 +17,7 @@ const Main = ({ inpDesc, data }) => {
     <div className='main'>
       <div className="main__container">
         {data ? (
-          <Card data= {data} isCardOpen={isCardOpen} handleCardBtn={handleCardBtn} />
+          <Card data= {data} isCardOpen={isCardOpen} handleCardBtn={handleCardBtn} hourly={hourly}/>
         ) : (
           <Bars
             height='80'
